@@ -1,11 +1,8 @@
 # 1. Library imports
-from pyexpat import model
 import uvicorn
 from fastapi import FastAPI
 from Request import weatherData
-import numpy as np
 import pickle
-import pandas as pd
 # 2. Create the app object
 app = FastAPI()
 pickle_in = open("model.pkl","rb")
@@ -13,6 +10,11 @@ model = pickle.load(pickle_in)
 
 # Expose the prediction functionality, make a prediction from the passed
 #    JSON data and return the predicted Bank Note with the confidence
+@app.get('')
+def Home():
+    return{
+        '/Predict should be api endpoit for predicting Humidity'
+    }
 @app.post('/predict')
 def predict_weather(data:weatherData):
     dataset = data.dict()

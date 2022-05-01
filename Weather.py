@@ -10,7 +10,7 @@ model = pickle.load(pickle_in)
 
 # Expose the prediction functionality, make a prediction from the passed
 #    JSON data and return the predicted Bank Note with the confidence
-@app.get('')
+@app.get('/')
 def Home():
     return{
         '/Predict should be api endpoit for predicting Humidity'
@@ -29,7 +29,7 @@ def predict_weather(data:weatherData):
     Predicted_Value = model.predict(Test_data)
     Predict = Predicted_Value[0]
     return {
-        'prediction': {'result':Predict}
+        'prediction': {'Humidity':Predict}
     }
 
 # 5. Run the API with uvicorn

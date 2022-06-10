@@ -31,8 +31,19 @@ def predict_weather(data:weatherData):
     Predict = Predicted_Value[0]
     Format_Predict = "{:.2f}".format(Predict)
     Format_Predict = float(Format_Predict)*100
+    if(A>=0 and A<0.2):
+        band = 'BNAD - A'
+    elif(A>=0.2 and A<0.4):
+        band = 'BNAD - B'
+    elif(A>=0.4 and A<0.6):
+        band = 'BNAD - C'
+    elif(A>=0.6 and A<0.8):
+        band = 'BNAD - D'
+    elif(A>=0.8 and A<1.0):
+        band = 'BNAD - E'
     return {
-        'prediction': {'Humidity (%)':Format_Predict}
+        'prediction': {'Humidity (%)':Format_Predict,
+                       'Music Band':band}
     }
 
 # 4. Run the API with uvicorn
